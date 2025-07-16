@@ -25,6 +25,7 @@ body{
 .caja-general{
     width: max-content;
     display: flex;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -43,10 +44,17 @@ h2{
 
 h1{
     margin-bottom: 10px;
+    
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 h2{
     margin: 10px 0;
+
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: 100;
 }
 
 .caja-padre-reproducir{
@@ -60,13 +68,33 @@ h2{
 }
 
 #portada-principal{
+    position: relative;
     width: 200px;
     aspect-ratio: 1/1;
+    overflow: hidden;
 
     background-color: var(--color-principal);
     border: 4px solid var(--color-borde);
     border-radius: 20px;
 }
+
+#portada-principal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    box-shadow: 0 0 5px 5px rgb(4,3,43) inset;
+    opacity: 0.2;
+}
+
+#portada-principal img{
+    width: 100%;
+    height: 100%;
+}
+
 
 .progreso{
     appearance: none;
@@ -112,6 +140,7 @@ h2{
     white-space: normal;
     word-break: break-word;
     border: 2px solid var(--color-borde);
+    border-radius: 4px;
 
     transition: border-color 0.3s;
 }
@@ -131,6 +160,8 @@ h2{
     font-size: 1.5rem;
     background-color: var(--color-principal);
     color: var(--color-texto);
+
+    cursor: pointer;
 }
 
 /* #atras:active{

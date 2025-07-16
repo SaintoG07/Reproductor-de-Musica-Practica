@@ -15,18 +15,23 @@
         <!-- !Primera caja, dónde va la portoda, nombre, atras, play-pausa, seguiente, etc -->
         <div class="caja-padre-reproducir">
             <h1 id="Titulo-cancion">Nombre</h1>
-            <div id="portada-principal"></div>
+            <div id="portada-principal">
+                <img src="" id="portada-principal-img">
+            </div>
             <h2 id="artista-nombre">Artista</h2>
+            <audio id="musica-reproducir">
+                <source src="" type="audio/mp3">
+            </audio>
             <input type="range" class="progreso">
             <div class="controles">
-                <button id="atras">
+                <button class="atras">
                     <i class="bi bi-skip-backward-fill"></i>
                 </button>
-                <button id="play-pausa">
+                <button class="play-pausa">
                     <!-- <i class="bi bi-suit-heart-fill"></i> -->
-                    <i class="bi bi-suit-heart"></i>
+                    <i class="bi bi-suit-heart" id="play-icon"></i>
                 </button>
-                <button id="seguiente">
+                <button class="siguiente">
                     <i class="bi bi-skip-forward-fill"></i>
                 </button>
             </div>
