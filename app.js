@@ -1,4 +1,6 @@
 // !Caja dónde se reproduce
+const caja_padre = document.querySelector('.caja-padre-reproducir');
+
 const titulo = document.getElementById('Titulo-cancion');
 const portada_principal = document.getElementById('portada-principal');
 const artista = document.getElementById('artista-nombre');
@@ -14,7 +16,8 @@ const siguiente = document.querySelector('button.siguiente');
 // ?Portada
 const portada_img = document.getElementById('portada-principal-img');
 
-console.log(portada_img);
+// !Seleccionar todos los "lista-cancion"
+const contenedor_lista = document.querySelector('.caja-padre-lista-musica');
 
 
 const lista_canciones = [
@@ -52,12 +55,69 @@ const lista_canciones = [
 
 let indie_cancion_actual = 0;
 
+
+lista_canciones.forEach((cancion_actual, indice) =>{
+    const div_cancion = document.createElement('div');
+    div_cancion.classList.add('lista-cancion');
+
+    const div_miniportada = document.createElement('div');
+    div_miniportada.classList.add('mini-portada');
+
+    const img = document.createElement('img');
+    img.src = cancion_actual.ruta_portada;
+
+    const p = document.createElement('p');
+    p.textContent = cancion_actual.nombre;
+
+    div_miniportada.appendChild(img);
+    div_cancion.appendChild(div_miniportada);
+    div_cancion.appendChild(p);
+    contenedor_lista.appendChild(div_cancion);
+})
+
+const elementosLista = document.querySelectorAll('.lista-cancion');
+
+
+elementosLista.forEach((elementos, indice)=>{
+
+    elementos.addEventListener('click', ()=>{
+        elementosLista.forEach((elemento)=>{
+            elemento.classList.remove('activa')
+        })
+        elementos.classList.add('activa')
+        indie_cancion_actual=indice;
+        actualizar_inf_cancion();
+        play_musica();
+    });
+});
+
 function actualizar_inf_cancion(){
     titulo.textContent = lista_canciones[indie_cancion_actual].nombre;
     portada_img.src = lista_canciones[indie_cancion_actual].ruta_portada;
     artista.textContent = lista_canciones[indie_cancion_actual].artista;
     musica_reproducir.src = lista_canciones[indie_cancion_actual].ruta;
+
+    elementosLista.forEach((e, i)=>{ 
+        e.classList.toggle('activa', i === indie_cancion_actual)
+    });
 };
+
+// elementosLista.forEach((elemento, indice) => {
+//         let mini_portada = elemento.querySelector('.mini-portada'); 
+//         console.log(mini_portada);
+        
+//         let mini_portada_img = mini_portada.querySelector('img');
+//         let nombre = elemento.querySelector('p');
+
+//         mini_portada_img.src = lista_canciones[indice].ruta_portada;
+//         nombre.textContent = lista_canciones[indice].nombre;
+
+//     elemento.addEventListener('click', () => {
+//         indie_cancion_actual = indice;
+//         actualizar_inf_cancion();
+//         play_musica();
+//     });
+// });
 
 
 // !Funciones para reproducir:
@@ -121,6 +181,18 @@ play_pausa.addEventListener('click', ()=>{
 musica_reproducir.addEventListener('timeupdate', ()=>{
     if(!musica_reproducir.paused){
         progreso_barra.value = musica_reproducir.currentTime;
+    };
+
+    if(indie_cancion_actual==4 && musica_reproducir.currentTime < 5){
+        portada_principal.classList.add('animacion')
+    } else{
+        portada_principal.classList.remove('animacion')
+    }
+
+    if(indie_cancion_actual==4 && (musica_reproducir.currentTime>5 && musica_reproducir.currentTime<10)){
+        caja_padre.classList.add('animacion2');
+    }else{
+        caja_padre.classList.remove('animacion2');
     };
 });
 
