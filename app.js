@@ -183,18 +183,23 @@ musica_reproducir.addEventListener('timeupdate', ()=>{
         progreso_barra.value = musica_reproducir.currentTime;
     };
 
-    if(indie_cancion_actual==4 && musica_reproducir.currentTime < 5){
-        portada_principal.classList.add('animacion')
-    } else{
-        portada_principal.classList.remove('animacion')
-    }
+    // if(indie_cancion_actual==4 && musica_reproducir.currentTime < 5){
+    //     portada_principal.classList.add('animacion')
+    // } else{
+    //     portada_principal.classList.remove('animacion')
+    // }
 
-    if(indie_cancion_actual==4 && (musica_reproducir.currentTime>5 && musica_reproducir.currentTime<10)){
-        caja_padre.classList.add('animacion2');
-    }else{
-        caja_padre.classList.remove('animacion2');
-    };
+    // if(indie_cancion_actual==4 && (musica_reproducir.currentTime>5 && musica_reproducir.currentTime<10)){
+    //     caja_padre.classList.add('animacion2');
+    // }else{
+    //     caja_padre.classList.remove('animacion2');
+    // };
 });
+
+musica_reproducir.addEventListener('ended', ()=>{
+    siguiente_cancion();
+    play_musica();
+})
 
 progreso_barra.addEventListener('input', ()=>{
     musica_reproducir.currentTime = progreso_barra.value;
