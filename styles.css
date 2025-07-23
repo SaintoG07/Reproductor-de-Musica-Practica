@@ -160,6 +160,7 @@ h2{
     border-radius: 4px;
 
     transition: border-color 0.3s;
+    transition: transform 0.3s ease;
     cursor: pointer;
 }
 
@@ -226,7 +227,14 @@ h2{
 
 .lista-cancion.activa{
     border-color: var(--color-seleccion);
+    box-shadow: 0 0 2px 2px var(--color-seleccion);
+
+    transform: scale(1.04);
 }
+
+/* .lista-cancion.activa{
+
+} */
 
 .lista-cancion.activa .mini-portada{
     border-color: var(--color-seleccion);
