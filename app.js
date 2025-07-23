@@ -50,6 +50,12 @@ const lista_canciones = [
         artista: 'Desconocido',
         ruta: 'music/SHADOWBORN.mp3',
         ruta_portada: 'img/shadowborn.webp'
+    },
+    {
+        nombre: 'Desconocido',
+        artista: 'unknown',
+        ruta: 'music/DesconocidoMusic.mp3',
+        ruta_portada: 'img/desconocido.jpg'
     }
 ];
 
